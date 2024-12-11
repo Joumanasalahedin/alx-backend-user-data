@@ -6,7 +6,6 @@ Module for filtering and obfuscating sensitive data in log messages.
 import logging
 from typing import List
 import re
-from filtered_logger import filter_datum
 
 
 def filter_datum(fields: List[str], redaction: str,
