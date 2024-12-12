@@ -88,3 +88,30 @@ def get_db() -> MySQLConnection:
                                    host=host,
                                    database=db_name)
     return conn
+
+
+def main() -> None:
+    """
+    Main function to log user data with sensitive fields filtered.
+
+    Retrieves rows from the users table and logs them with sensitive fields redacted.
+    """
+    logger = get_logger()
+    db = get_db()
+    cursor = db.cursor()
+
+    try:
+        cursor.execute("SELECT * FROM users;")
+        columns = [column[0] for column in cursor.description]
+        for row in cursor:
+            record = "; ".join(
+                f"{key}={value}" for key, value in zip(columns, row)
+            )
+            logger.info(record)
+    finally:
+        cursor.close()
+        db.close()
+
+
+if __name__ == "__main__":
+    main()
