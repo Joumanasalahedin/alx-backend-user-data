@@ -94,7 +94,7 @@ def main() -> None:
     """
     Main function to log user data with sensitive fields filtered.
 
-    Retrieves rows from the users table and logs them with sensitive fields redacted.
+    Retrieves rows from the users table and logs sensitive fields redacted.
     """
     logger = get_logger()
     db = get_db()
