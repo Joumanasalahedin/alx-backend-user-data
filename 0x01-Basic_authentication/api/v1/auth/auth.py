@@ -22,15 +22,19 @@ class Auth:
         if path is None:
             return True
 
-        if not excluded_paths:
+        if not excluded_paths or len(excluded_paths) == 0:
             return True
 
         # Ensure path has a trailing slash for comparison
         path = path.rstrip("/") + "/"
 
         for excluded_path in excluded_paths:
-            if path == excluded_path:
-                return False
+            if excluded_path.endswith('*'):
+                if path.startswith(excluded_path[:-1]):
+                    return False
+            else:
+                if path == excluded_path.rstrip('/') + '/':
+                    return False
 
         return True
 
