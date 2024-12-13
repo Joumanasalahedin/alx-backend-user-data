@@ -50,7 +50,7 @@ class Auth:
 
         return request.headers.get("Authorization")
 
-    def current_user(self, request=None) -> TypeVar('User'):
+    def current_user(self, request=None) -> TypeVar('User'):  # type: ignore
         """
         Retrieves the current user based on a Flask request object.
 
