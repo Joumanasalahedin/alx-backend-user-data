@@ -9,4 +9,5 @@ from api.v1.views.session_auth import *
 from api.v1.views.users import *
 from api.v1.views.index import *
 
+from models.user import User
 User.load_from_file()
