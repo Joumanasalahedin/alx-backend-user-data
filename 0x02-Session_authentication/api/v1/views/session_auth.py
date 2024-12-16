@@ -5,7 +5,6 @@ Session Authentication View Module
 from flask import request, jsonify, abort
 from models.user import User
 from os import getenv
-from api.v1.app import auth
 from api.v1.views import app_views
 
 
@@ -36,6 +35,7 @@ def login():
         return jsonify({"error": "wrong password"}), 401
 
     # Create a session for the user
+    from api.v1.app import auth
     session_id = auth.create_session(user.id)
 
     # Return the user's JSON representation and set the session cookie
