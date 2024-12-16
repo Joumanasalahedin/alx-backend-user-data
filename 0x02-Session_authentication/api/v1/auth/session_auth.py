@@ -31,7 +31,7 @@ class SessionAuth(Auth):
         """
         Retrieve a User ID based on a given Session ID.
         Returns:
-            str: The User ID corresponding to the session ID, or None if invalid.
+            str: User ID corresponding to the session ID or None if invalid.
         """
         if session_id is None or not isinstance(session_id, str):
             return None
