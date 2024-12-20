@@ -90,7 +90,8 @@ class Auth:
         self._db.update_user(user.id, session_id=session_id)
         return session_id
 
-    def get_user_from_session_id(self, session_id: Optional[str]) -> Optional[User]:
+    def get_user_from_session_id(self,
+                                 session_id: Optional[str]) -> Optional[User]:
         """
         Get a user from a given session ID.
 
