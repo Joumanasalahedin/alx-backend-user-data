@@ -3,7 +3,7 @@
 Auth module for password hashing and user registration
 """
 
-from typing import Optional
+from typing import Union
 from user import User
 from db import DB
 import bcrypt
@@ -73,7 +73,7 @@ class Auth:
             pass
         return False
 
-    def create_session(self, email: str) -> Optional[str]:
+    def create_session(self, email: str) -> Union[None, str]:
         """
         Create a session ID for a user identified by their email.
 
@@ -83,10 +83,9 @@ class Auth:
         try:
             user = self._db.find_user_by(email=email)
 
-            session_id = self._generate_uuid()
-
-            self._db.update_user(user.id, session_id=session_id)
-
-            return session_id
         except NoResultFound:
             return None
+
+        session_id = self._generate_uuid()
+        self._db.update_user(user.id, session_id=session_id)
+        return session_id
