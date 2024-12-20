@@ -77,7 +77,7 @@ class DB:
             None
 
         Raises:
-            ValueError: If an argument does not correspond to a valid user attribute.
+            ValueError: argument does not correspond to a valid user attribute
         """
         user = self.find_user_by(id=user_id)
 
